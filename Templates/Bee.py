@@ -74,9 +74,9 @@ def send_mail():
 
 def write_to_debug_file(string_to_write):
     if(DEBUG_MODE == 'y'):
-	    file_object = open(debugFile, "a+")
-		file_object.write(string_to_write)
-		file_object.close()
+        file_object = open(debugFile, "a+")
+        file_object.write(string_to_write)
+        file_object.close()
 	
 		
 def pushing(event):
