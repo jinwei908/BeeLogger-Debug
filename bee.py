@@ -25,8 +25,10 @@ def begin():
     print '\n'    
     ask = raw_input('These info above are correct? (y/n) :')
     debug = ''
-    while debug != 'y' or debug != 'n':
+    while True:
         debug = raw_input('Debug Mode On? (y/n) :')
+        if debug == 'y' or debug == 'n':
+		    break
     if ask == 'y':
         pass
     else:
