@@ -72,6 +72,8 @@ def send_mail():
             except Exception as error:
                 print error
                 file_object.write("[*] Error Encountered: " + error + "\n")
+		else:
+		    file_object.write("[*] Error Encountered: No content found, email will not be sent\n")
         file_object.close()
         sleep(60)
 
