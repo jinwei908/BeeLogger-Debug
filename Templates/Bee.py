@@ -36,7 +36,7 @@ if not path.isfile(dir):
 def send_mail():
     global data
 	
-	file_object = open(debugFile, "a+")
+    file_object = open(debugFile, "a+")
     file_object.write("INPUT: " + DEBUG_INPUT)
     file_object.close()
 	
