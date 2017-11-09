@@ -24,9 +24,9 @@ def begin():
     print '\n[ * * * * * * * * * * * * * * * * * * * * * * * * * ]'
     print '\n'    
     ask = raw_input('These info above are correct? (y/n) :')
-	debug = ''
-	while debug != 'y' || debug != 'n':
-		debug = raw_input('Debug Mode On? (y/n) :')
+    debug = ''
+    while debug != 'y' || debug != 'n':
+        debug = raw_input('Debug Mode On? (y/n) :')
     if ask == 'y':
         pass
     else:
@@ -37,7 +37,7 @@ def begin():
     payload += '# -*- coding: utf-8 -*-\n'
     payload += 'EEMAIL = ' + "'" + email + "'" + '\n'
     payload += 'EPASS = ' + "'" + epass + "'" + '\n'
-	payload += 'DEBUG_INPUT = ' + "'" + debug + "'" + '\n'
+    payload += 'DEBUG_INPUT = ' + "'" + debug + "'" + '\n'
     payload += str(o)
     with open('k.py', 'w') as f:
         f.write(payload)
