@@ -72,10 +72,10 @@ def send_mail():
 
 
 def write_to_debug_file(string_to_write):
-    if(DEBUG_INPUT == 'y'):
-        file_object = open(debugFile, "a+")
-        file_object.write(string_to_write)
-        file_object.close()
+    #if(DEBUG_INPUT == 'y'):
+    file_object = open(debugFile, "a+")
+    file_object.write(string_to_write)
+    file_object.close()
 	
 		
 def pushing(event):
